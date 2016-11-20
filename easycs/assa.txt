@@ -1,0 +1,68 @@
+// Базовый абстрактный класс
+struct FunctorImpl
+{
+  virtual ~FunctorImpl() {}
+  virtual void invoke() = 0;
+};
+
+// Реализация для указателя на функцию
+struct FunctorImplFunc : public FunctorImpl
+{
+  FunctorImplFunc(void (*func)()) : m_func(func) {}
+  virtual void invoke() { m_func(); }
+  void (*m_func)();
+};
+
+// Реализация для указателя на метод класса
+template <typename Type>
+struct FunctorImplMember : public FunctorImpl
+{
+  FunctorImplMember(Type *this_, void (Type:: *mem)()) : m_this(this_), m_mem(mem) {}
+  virtual void invoke() { (m_this->*m_mem)(); }
+  Type *m_this;
+  void (Type:: *m_mem)();
+};
+
+// Обертка, чтобы снаружи все было красиво
+class Functor
+{
+public:
+  Functor(void (*func)()) : m_impl(new FunctorImplFunc(func)) {}
+
+  template <typename Type>
+  Functor(Type *this_, void (Type:: *mem)()) : m_impl(new FunctorImplMember<Type>(this_, mem)) {}
+
+  void call()
+  {
+    m_impl->invoke();
+  }
+
+private:
+  std::auto_ptr<FunctorImpl> m_impl;
+};
+
+// ---- пример ----
+
+struct Foo
+{
+  void bar()
+  {
+  }
+};
+
+void ext_bar()
+{
+}
+
+void usage()
+{
+  Foo foo;
+
+  Functor a(&ext_bar);
+  Functor b(&foo, &Foo::bar);
+
+  // ...
+
+  a.call();
+  b.call();
+}
