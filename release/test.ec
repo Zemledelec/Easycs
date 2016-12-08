@@ -69,3 +69,14 @@ int fib( int n)
 }
 
 int tt = main3();
+
+//NOT TESTED
+int fib(term, val=1, prev=0) {
+        
+    if(term == 0) return prev;
+        
+    if(term == 1) return val;
+        
+    return fib (term - 1, val + prev, val);
+    
+};
