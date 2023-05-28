@@ -336,7 +336,7 @@ fun[3]--> $CBoo#0::@fun#0::$CFoo#4::@fun#1
 01: fun() --> @fun#0
 03: a     --> @fun#0::a#1
 05: a     --> @fun#0::a#2
-08: a     --> @fun#0::a#1   // ошибка: redefenition
+08: a     --> @fun#0::a#1   // error: redefenition
 11: a     --> @fun#0::a#3
 13: a     --> @fun#0::a#4
 15: a     --> @fun#0::a#3
