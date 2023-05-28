@@ -131,7 +131,7 @@ struct activationrecord_s{
 };
 ```
 
-### Виртуальная машина и синтаксический анализатор.
+### Virtual Machine and Syntax Analyzer
 
 ```
 class InternalCode
@@ -231,7 +231,7 @@ private:
 };
 ```
 
-### Перегрузка функции и область видимости.
+### Function Overloading and Scope Visibility
 
 Транслятор отслеживает область видимости с помощью стека области видимости namespaceStack. Это 
 массив строк соответствующих названиям областей. Когда нужно узнать имя по области видимости 
