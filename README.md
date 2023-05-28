@@ -25,37 +25,33 @@ int fib(term, val=1, prev=0) {
 };
 ```
 
-### Требования
+### Requirements
 
-1.  строгая типизация.
-2.  базовые типы: int, float, bool, string, void;
-3.  динамический массив, как базовый тип. Тип хранимых элементов.
-4.  создание пользовательских типов ООП. Классов.
-5.  блочная видимость.
-6.  Автоматические переменные.
-7.  Объявление локальных и глобальных переменных.
-8.  параметры базовых типов кроме массива, передаются в фунцию по значению. Пользовательские - по ссылке
-9.  Использование встроенных глобальных функций кода.
-12. Доступ к стеку управления ВМ из кода программы. Это значит получать и изменять состояние
-    ВМ вызывать методы изменять переменные скрипта.
-13. Управляющие операторы. if else, while, do while, for. break, continue.
-14. Коментарии однострочные выделяются символами '//', многострочные '/*'(открыть) и '*/'(закрыть)
-15. Препроцессорные средства, директивы include и define.
+1. Strict typing.
+2. Basic types: int, float, bool, string, void.
+3. Dynamic array as a basic type. Type of stored elements.
+4. Creation of user-defined types in OOP. Classes.
+5. Block visibility.
+6. Automatic variables.
+7. Declaration of local and global variables.
+8. Parameters of basic types, except arrays, are passed to functions by value. User-defined types are passed by reference.
+9. Usage of built-in global functions in the code.
+10. Access to the VM's control stack from the program's code. This means obtaining and modifying the VM's state, calling methods, and modifying script variables.
+11. Control flow statements: if-else, while, do-while, for. break, continue.
+12. Single-line comments are indicated by '//', multiline comments are indicated by '/' (open) and '/' (close).
+13. Preprocessor facilities, include and define directives.
 
 
-### Механизм трансляции
+### Translation mechanism
 
-1. Препроцессорная обработка.
-   Вход: программа на языке easycs текстовый файл
-   Выход: программа на языке esycs с выполненными макроподстановками. Это временный файл разбитый на строчки, с учетом
-   макроподстановок правила языка Си, где начало каждой строки, это коментарий с именем исходного файла,
-   и номером строки для него.
+1. Preprocessor processing.
+Input: Program written in the easycs language as a text file.
+Output: Program written in the esycs language with macro substitutions performed. This is a temporary file divided into lines, taking into account the macro substitutions of the C language rules. Each line starts with a comment indicating the name of the source file and the line number.
 
-2. Синтаксически управляемая трансляция.
-   Вход: программа на языке easycs
-   Выход: внутреннее представление прграммы ВМ easycs.
-   Включает два прохода. На первом проходе проверяются синтаксические и лексические ошибки.
-   На втором проходе проверяются семантические ошибки(проверка типов), строится внутреннее представление для ВМ.
+2. Syntax-directed translation.
+Input: Program written in the easycs language.
+Output: Internal representation of the program for the easycs VM.
+This phase consists of two passes. The first pass checks for syntax and lexical errors. The second pass checks for semantic errors (type checking) and constructs the internal representation for the VM.
 
 
 Внутренее представление ВМ включает в себя набор механизмов для выполнения кода.
