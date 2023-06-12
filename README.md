@@ -1,5 +1,5 @@
 # Easycs
-Long time ago I made my own computer language(C grammar) interpreter, for making things I like the most.
+C like language interpreter, for making things...fast and easy!
 It's comparatively fast interpreter, and completely primitive against other languages such as Python, LUA, and even Angel Script. Nevertheless...
 Now, I want just to save it here as a good memory.
 
